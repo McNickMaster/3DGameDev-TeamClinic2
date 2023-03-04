@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6246105440458147052}
   - component: {fileID: 6246105440458147054}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: BottleModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6246105440458147051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.18856911, y: 0.30396312, z: 0.18856911}
+  m_LocalScale: {x: 0.089599, y: 0.089599, z: 0.089599}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6246105441242706377}
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6246105440458147051}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4068373912626513877, guid: f4e1dbefe5ef2c340b798ee30fb716ea, type: 3}
 --- !u!23 &6246105440458147052
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5934e2776300f1b46ae228d4eaf23898, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,8 +95,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 1.9999999, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Size: {x: 3.2350166, y: 10.905014, z: 3.2689228}
+  m_Center: {x: -0.1290975, y: 4.8031816, z: 0.4389225}
 --- !u!1 &6246105441242706390
 GameObject:
   m_ObjectHideFlags: 0

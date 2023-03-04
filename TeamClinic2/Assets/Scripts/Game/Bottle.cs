@@ -8,6 +8,8 @@ public class Bottle : MonoBehaviour
     public LayerMask layerMask;
     public GameObject sound;
 
+    public bool thrown = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +26,11 @@ public class Bottle : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //Debug.Log(collision.gameObject.layer + " " + layerMask.value);
-        
-        Instantiate(sound, transform.position, transform.rotation, null);
-        Destroy(this.gameObject);
+        if(thrown)
+        {
+            Instantiate(sound, transform.position, transform.rotation, null);
+            Destroy(this.gameObject);
+        }
         
     }
 }
