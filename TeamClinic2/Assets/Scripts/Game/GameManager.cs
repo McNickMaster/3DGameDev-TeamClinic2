@@ -117,7 +117,8 @@ namespace Game
 
         private bool Input_PauseDown()
         {
-            return Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P);
+           // return Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P);
+           return Input.GetKeyDown(KeyCode.P);
         }
     }
 
