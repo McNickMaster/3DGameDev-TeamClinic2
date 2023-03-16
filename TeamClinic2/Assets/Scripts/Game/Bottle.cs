@@ -7,6 +7,7 @@ public class Bottle : MonoBehaviour
 
     public LayerMask layerMask;
     public GameObject sound;
+    public GameObject shards;
 
     public bool thrown = false;
 
@@ -29,6 +30,7 @@ public class Bottle : MonoBehaviour
         if(thrown)
         {
             Instantiate(sound, transform.position, transform.rotation, null);
+            Instantiate(shards, transform.position, transform.rotation, null);
             Destroy(this.gameObject);
         }
         

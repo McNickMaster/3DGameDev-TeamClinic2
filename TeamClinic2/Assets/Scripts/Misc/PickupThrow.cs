@@ -47,6 +47,7 @@ public class PickupThrow : MonoBehaviour
             heldRB.useGravity = false;
             heldRB.drag = 10;
             heldRB.constraints = RigidbodyConstraints.FreezeRotation;
+            heldRB.isKinematic = true;
 
             heldRB.transform.parent = holdArea;
 
@@ -69,6 +70,9 @@ public class PickupThrow : MonoBehaviour
         heldRB.drag = 1;
         heldRB.constraints = RigidbodyConstraints.None;
         heldRB.transform.parent = null;
+        heldRB.isKinematic = false;
+
+        heldThing.GetComponent<Bottle>().thrown = true;
 
         heldThing = null;
 
