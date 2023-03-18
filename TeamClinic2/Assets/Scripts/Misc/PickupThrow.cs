@@ -57,7 +57,7 @@ public class PickupThrow : MonoBehaviour
 
     void MoveThing()
     {
-        if (Vector3.Distance(heldThing.transform.position, holdArea.position) > 0.1f)
+        if (heldThing != null && Vector3.Distance(heldThing.transform.position, holdArea.position) > 0.1f)
         {
             Vector3 moveDir = (holdArea.position - heldThing.transform.position);
             heldRB.AddForce(moveDir * throwForce);

@@ -38,6 +38,10 @@ namespace Game
                     
                     gameState = GameState.Running;
 
+                    if(Cutscene.instance != null)
+                    {
+                        Cutscene.instance.StartTrack();
+                    }
                     
                     break;
                 }
@@ -76,6 +80,11 @@ namespace Game
         private void SwitchGameState(GameState newState)
         {
             gameState = newState;
+        }
+
+        public void StartGame()
+        {
+            SceneManager.LoadScene(1);
         }
 
         public void Quit()
