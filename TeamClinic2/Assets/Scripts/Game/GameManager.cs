@@ -2,8 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Game
-{
     public class GameManager : MonoBehaviour
     {
 
@@ -13,11 +11,16 @@ namespace Game
 
         [Header("Modules")]
         public GameObject pauseUI;
+        public GameObject winScreen, loseScreen;
 
 
         private void Awake()
         {
             instance = this;
+
+            
+            winScreen.SetActive(false);
+            loseScreen.SetActive(false);
         }
 
         private void Update()
@@ -70,11 +73,19 @@ namespace Game
             }
         }
 
-        
+        public void Win()
+        {
+            StartUIMode();
+            gameState = GameState.Win;
+            Time.timeScale = 0.1f;
+            winScreen.SetActive(true);
+        }
 
         public void PlayerDied()
         {
+            StartUIMode();
             gameState = GameState.Lost;
+            loseScreen.SetActive(true);
         }
 
         private void SwitchGameState(GameState newState)
@@ -84,6 +95,7 @@ namespace Game
 
         public void StartGame()
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene(1);
         }
 
@@ -141,4 +153,3 @@ namespace Game
         Ready, Paused, Running, Starting, Win, Lost
     }
     
-}

@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 6246105441242706379}
   m_Layer: 0
   m_Name: Bottle
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 6246105441242706390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.86, z: -4.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6246105440458147050}
@@ -163,3 +163,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   sound: {fileID: 6702906736477043987, guid: 143dce34fb12c074db61fffbe550243c, type: 3}
+  shards: {fileID: 249881085968048899, guid: 8fd8c3a6824ece94da8d03cece5157cd, type: 3}
+  thrown: 0

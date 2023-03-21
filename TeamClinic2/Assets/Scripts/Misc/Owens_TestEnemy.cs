@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Owens_TestEnemy : MonoBehaviour
 {
+
+    public Animator anim;
     private Owens_StateMachine brain;
     // We don't have these yet but when we do, obv copy this file and enable it.
     //private Animator anim;
@@ -23,7 +25,7 @@ public class Owens_TestEnemy : MonoBehaviour
     [SerializeField]private float idleTimer;
 
     // Debug state identifier for when we are testing.
-    [SerializeField] private UnityEngine.UI.Text stateNote;
+ //   [SerializeField] private UnityEngine.UI.Text stateNote;
 
 
     // Finds all the stuff we don't want to input ourselves.
@@ -53,8 +55,9 @@ public class Owens_TestEnemy : MonoBehaviour
 
     void IdleEnter() //Clears any movement data and readies for a new state.
     {
-        stateNote.text = "Idle";
+        //stateNote.text = "Idle";
         nav.ResetPath();
+        anim.SetTrigger("Idle");
     }
 
     void Idle() // If the player is close enough, start chasing. Otherwise, wait a bit and then move to a random spot.
@@ -79,8 +82,9 @@ public class Owens_TestEnemy : MonoBehaviour
 
     void ChaseEnter() // Prepares our enemy to actually chase the player.
     {
-        stateNote.text = "Chase";
-        //anim.SetBool("Chase",true);
+        //stateNote.text = "Chase";
+        
+        anim.SetTrigger("Chase");
     }
 
     void Chase() // Actually chases the player unless they get too far away.
@@ -95,12 +99,12 @@ public class Owens_TestEnemy : MonoBehaviour
 
     void ChaseExit() // Welp, looks like they either got away or I added a state to attack... Take your pick really.
     {
-        //anim.SetBool("Chase", false);
+        
     }
 
     void WanderEnter() // Generates a random position to move to, and readies everything to do so.
     {
-        stateNote.text = "Wander";
+        //stateNote.text = "Wander";
         //anim.SetBool("Chase", true);
         float distanceFromCurrentPosition = 10f;
         Vector3 wanderDirection = (Random.insideUnitSphere * distanceFromCurrentPosition) + transform.position; //current position of enemy offset by unitspehre calc 
@@ -110,6 +114,7 @@ public class Owens_TestEnemy : MonoBehaviour
         NavMesh.SamplePosition(wanderDirection, out navMeshHit, 3f, NavMesh.AllAreas);
         Vector3 destination = navMeshHit.position;  //Target point.
         nav.SetDestination(destination);
+        anim.SetTrigger("Walk");
     }
 
     void Wander() // Handles the moving between Idle and Chase states, since those are really all we will be going to in this demo.
@@ -129,5 +134,33 @@ public class Owens_TestEnemy : MonoBehaviour
     void WanderExit() // Leaves the Wander state, and turns off animation flag that totally exists right now... Totally.
     {
         //anim.SetBool("Chase",false);
+    }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == 7)
+        {
+            nav.SetDestination(other.transform.position);
+            Invoke("ResetTarget_AsPlayer", 5);
+        }
+    }
+
+    void ResetTarget_AsPlayer()
+    {
+        nav.SetDestination(player.transform.position);
+    }
+
+    
+    void FakeWanderEnter()
+    {
+        
+    }
+
+    public void FollowBottle(Vector3 pos)
+    {
+        nav.SetDestination(pos);
+        brain.PushState(Wander, FakeWanderEnter, WanderExit);
+
     }
 }

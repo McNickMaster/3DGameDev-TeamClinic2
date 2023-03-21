@@ -29,6 +29,16 @@ public class Bottle : MonoBehaviour
         //Debug.Log(collision.gameObject.layer + " " + layerMask.value);
         if(thrown)
         {
+            GameObject[] Enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in Enemies)
+            {
+                if (Vector3.Distance(this.transform.position, enemy.transform.position) <= 20)
+                {
+                    Owens_TestEnemy brain = enemy.GetComponent<Owens_TestEnemy>();
+                    brain.FollowBottle(this.transform.position);
+                }
+            }
+
             Instantiate(sound, transform.position, transform.rotation, null);
             Instantiate(shards, transform.position, transform.rotation, null);
             Destroy(this.gameObject);

@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         
-        transform.localScale = new Vector3(1, crouched ? crouchHeight:1
+        transform.localScale = 0.6f * new Vector3(1, crouched ? crouchHeight:1
         , 1);
 
         if(justCrouched)
@@ -158,7 +158,15 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        
+        if(other.gameObject.layer == 10)
+        {
+            GameManager.instance.Win();
+        }
+
+        if(other.gameObject.layer == 11)
+        {
+            GameManager.instance.PlayerDied();
+        }
     }
 
     void OnTriggerExit(Collider other)
